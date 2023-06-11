@@ -15,4 +15,15 @@ public class FilmeController : ControllerBase
         filmes.Add(filme);
     }
 
+    [HttpGet]
+    public List<Filme> RecuperarFilmes()
+    {
+        return filmes;
+    }
+
+    [HttpPost]
+    public Filme RecuperarFilmesById(string idFilme)
+    {
+        return filmes.Find(x => x.IdFilme == idFilme);
+    }
 }
