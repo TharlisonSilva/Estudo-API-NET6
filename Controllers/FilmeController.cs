@@ -10,20 +10,26 @@ public class FilmeController : ControllerBase
     private static List<Filme> filmes = new List<Filme>();
 
     [HttpPost]
-    public void AdicionarFilme([FromBody]Filme filme)
+    public IActionResult AdicionarFilme([FromBody]Filme filme)
     {
         filmes.Add(filme);
+        Console.WriteLine(filme.ID);
+        return CreatedAtAction(nameof(RecuperarFilmePorId), new { id = filme.ID}, filme);
     }
 
     [HttpGet]
-    public List<Filme> RecuperarFilmes()
+    public IEnumerable<Filme> RecuperarFilmes([FromQuery] int skyp=0, [FromQuery] int take=50)
     {
-        return filmes;
+        return filmes.Skip(skyp).Take(take);
     }
 
-    [HttpPost]
-    public Filme RecuperarFilmesById(string idFilme)
+    [HttpGet("{id}")]
+    public IActionResult RecuperarFilmePorId(string id)
     {
-        return filmes.Find(x => x.IdFilme == idFilme);
+        var filme =  filmes.FirstOrDefault(filme => filme.ID == id);
+        if(filme == null)
+            return NotFound();
+        return Ok(filme);
     }
+
 }

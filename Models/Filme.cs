@@ -3,7 +3,8 @@ using System.ComponentModel.DataAnnotations;
 namespace Estudo_API_NET6.Models;
 public class Filme
 {
-    public string IdFilme{ get; set; }
+    [Key]
+    public string? ID{ get; internal set; }
 
     [Required(ErrorMessage = "O Titulo do filme é obrigatorio")]
     [MaxLength(50, ErrorMessage = "O tamanho maximo do titulo é 50 caracteres")]
@@ -20,7 +21,7 @@ public class Filme
     public Filme()
     {
         var uuid = Guid.NewGuid().ToString();
-        this.IdFilme = uuid;
+        this.ID = uuid;
     }
 
 }
