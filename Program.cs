@@ -1,4 +1,13 @@
+using Microsoft.EntityFrameworkCore;
+using Estudo_API_NET6.Data;
+
 var builder = WebApplication.CreateBuilder(args);
+
+/* conexão com o banco */
+var connectionString = builder.Configuration.GetConnectionString("FilmeConnection");
+builder.Services.AddDbContext<FilmeContext>(options => options.UseMySql(
+    connectionString,ServerVersion.AutoDetect(connectionString)
+));
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
