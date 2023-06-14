@@ -1,7 +1,7 @@
 using Estudo_API_NET6.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Estudo_API_NET6.Data;
+namespace Estudo_API_NET6.Data.Context;
 
 public class FilmeContext : DbContext
 {
@@ -9,6 +9,5 @@ public class FilmeContext : DbContext
     {
         
     }
-
-    public DbSet<Filme> Filmes { get; set;}
+    public DbSet<Filme> Filmes { get; set;} = null!;
 }
