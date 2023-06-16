@@ -2,6 +2,7 @@
 using Estudo_API_NET6.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Estudo_API_NET6.Migrations
 {
     [DbContext(typeof(FilmeContext))]
-    partial class FilmeContextModelSnapshot : ModelSnapshot
+    [Migration("20230616011935_CriandoTabelaEndereco")]
+    partial class CriandoTabelaEndereco
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -20,19 +23,19 @@ namespace Estudo_API_NET6.Migrations
 
             modelBuilder.Entity("Estudo_API_NET6.Models.Cinema", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<string>("ID")
                         .HasColumnType("varchar(255)");
 
                     b.Property<string>("EnderecoId")
                         .IsRequired()
                         .HasColumnType("varchar(255)");
 
-                    b.Property<string>("Nome")
+                    b.Property<string>("NOME")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("varchar(50)");
 
-                    b.HasKey("Id");
+                    b.HasKey("ID");
 
                     b.HasIndex("EnderecoId")
                         .IsUnique();
@@ -42,43 +45,43 @@ namespace Estudo_API_NET6.Migrations
 
             modelBuilder.Entity("Estudo_API_NET6.Models.Endereco", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<string>("ID")
                         .HasColumnType("varchar(255)");
 
-                    b.Property<string>("Logradouro")
+                    b.Property<string>("LOGRADOURO")
                         .IsRequired()
                         .HasMaxLength(150)
                         .HasColumnType("varchar(150)");
 
-                    b.Property<string>("Numero")
+                    b.Property<string>("NUMERO")
                         .IsRequired()
                         .HasMaxLength(5)
                         .HasColumnType("varchar(5)");
 
-                    b.HasKey("Id");
+                    b.HasKey("ID");
 
                     b.ToTable("Enderecos");
                 });
 
             modelBuilder.Entity("Estudo_API_NET6.Models.Filme", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<string>("ID")
                         .HasColumnType("varchar(255)");
 
-                    b.Property<int>("Duracao")
+                    b.Property<int>("DURACAO")
                         .HasColumnType("int");
 
-                    b.Property<string>("Genero")
+                    b.Property<string>("GENERO")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("varchar(50)");
 
-                    b.Property<string>("Titulo")
+                    b.Property<string>("TITULO")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("varchar(50)");
 
-                    b.HasKey("Id");
+                    b.HasKey("ID");
 
                     b.ToTable("Filmes");
                 });

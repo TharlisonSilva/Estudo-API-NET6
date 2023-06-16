@@ -10,4 +10,6 @@ public class FilmeContext : DbContext
         
     }
     public DbSet<Filme> Filmes { get; set;} = null!;
+    public DbSet<Cinema> Cinemas { get; set;} = null!;
+    public DbSet<Endereco> Enderecos { get; set;} = null!;
 }
