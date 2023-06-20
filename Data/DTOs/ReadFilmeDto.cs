@@ -5,11 +5,11 @@ namespace Estudo_API_NET6.Data.DTOs;
 public class ReadFilmeDto
 {
 
-    public string? TITULO { get; set; }
+    public string? Titulo { get; set; }
 
-    public string? GENERO { get; set; }
+    public string? Genero { get; set; }
 
-    public int DURACAO { get; set; }
+    public int Duracao { get; set; }
 
     public DateTime HoraDaConsulta{get; set; } = DateTime.Now;
 

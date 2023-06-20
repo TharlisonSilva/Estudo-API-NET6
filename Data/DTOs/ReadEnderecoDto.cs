@@ -5,7 +5,7 @@ namespace Estudo_API_NET6.Data.DTOs;
 
 public class ReadEnderecoDto
 {
-    public string? ID { get; set; }
-    public string? LOGRADOURO { get; set; }
-    public string? NUMERO { get; set; }
+    public string? Id { get; set; }
+    public string? Logradouro { get; set; }
+    public string? Numero { get; set; }
 }

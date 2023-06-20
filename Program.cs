@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 /* conexão com o banco */
 var connectionString = builder.Configuration.GetConnectionString("FilmeConnection");
-builder.Services.AddDbContext<FilmeContext>(options => options.UseMySql(
+builder.Services.AddDbContext<FilmeContext>(opt => opt.UseLazyLoadingProxies().UseMySql(
     connectionString,ServerVersion.AutoDetect(connectionString)
 ));
 

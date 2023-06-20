@@ -4,9 +4,9 @@ namespace Estudo_API_NET6.Data.DTOs;
 
 public class ReadCinemaDto
 {
-    public string? ID { get; set; } 
-    public string? NOME { get; set; }
-    public ReadEnderecoDto READENDERECODTO { get; set; } = null!;
+    public string? Id { get; set; } 
+    public string? Nome { get; set; }
+    public ReadEnderecoDto Endereco { get; set; } = null!;
     public DateTime HoraDaConsulta{get; set; } = DateTime.Now;
 
 }
