@@ -11,13 +11,14 @@ public class Cinema
     [MaxLength(50, ErrorMessage = "O tamanho maximo do nome é 50 caracteres")]
     public string? Nome { get; set; }
 
-   public string EnderecoId { get; set; } = null!;
-   public virtual Endereco Endereco { get; set; } = null!;
+    [Required(ErrorMessage = "O ID do endereço é obrigatorio")]
+    public string EnderecoId { get; set; } = null!;
+    public virtual Endereco Endereco { get; set; } = null!;
+    public virtual  ICollection<Sessao> Sessoes {get; set;} = null!;
 
     public Cinema()
     {
-        var uuid = Guid.NewGuid().ToString();
-        this.Id = uuid;
+        this.Id = Guid.NewGuid().ToString();
     }
 
 }

@@ -18,8 +18,7 @@ public class Endereco
 
     public Endereco()
     {
-        var uuid = Guid.NewGuid().ToString();
-        this.Id = uuid;
+        this.Id = Guid.NewGuid().ToString();
     }
 
 }

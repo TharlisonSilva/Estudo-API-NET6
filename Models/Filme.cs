@@ -18,11 +18,12 @@ public class Filme
     [Required(ErrorMessage = "A duração do filme é obrigatorio")]
     [Range(50, 600, ErrorMessage = "Um filme deve ter duração de 50 a 600 minutos")]
     public int Duracao { get; set; }
+
+    public virtual ICollection<Sessao> Sessoes {get; set;} = null!;
     
     public Filme()
     {
-        var uuid = Guid.NewGuid().ToString();
-        this.Id = uuid;
+        this.Id = Guid.NewGuid().ToString();
     }
 
 }

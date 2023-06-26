@@ -2,6 +2,7 @@
 using Estudo_API_NET6.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Estudo_API_NET6.Migrations
 {
     [DbContext(typeof(FilmeContext))]
-    partial class FilmeContextModelSnapshot : ModelSnapshot
+    [Migration("20230625233513_InclusaoSessao")]
+    partial class InclusaoSessao
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -92,7 +95,6 @@ namespace Estudo_API_NET6.Migrations
                         .HasColumnType("varchar(255)");
 
                     b.Property<string>("CinemaId")
-                        .IsRequired()
                         .HasColumnType("varchar(255)");
 
                     b.Property<string>("FilmeId")
@@ -121,19 +123,15 @@ namespace Estudo_API_NET6.Migrations
 
             modelBuilder.Entity("Estudo_API_NET6.Models.Sessao", b =>
                 {
-                    b.HasOne("Estudo_API_NET6.Models.Cinema", "Cinema")
+                    b.HasOne("Estudo_API_NET6.Models.Cinema", null)
                         .WithMany("Sessoes")
-                        .HasForeignKey("CinemaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CinemaId");
 
                     b.HasOne("Estudo_API_NET6.Models.Filme", "Filme")
                         .WithMany("Sessoes")
                         .HasForeignKey("FilmeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Cinema");
 
                     b.Navigation("Filme");
                 });

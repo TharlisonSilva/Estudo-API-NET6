@@ -10,7 +10,7 @@ public class ReadFilmeDto
     public string? Genero { get; set; }
 
     public int Duracao { get; set; }
-
+    public virtual ICollection<ReadSessaoDto> Sessoes {get; set;} = null!;
     public DateTime HoraDaConsulta{get; set; } = DateTime.Now;
 
 }
