@@ -7,4 +7,6 @@ public class CreateSessaoDto
 {
     [Required]
     public string? FilmeId {get; set;}
+    [Required]
+    public string? CinemaId {get; set;}
 }

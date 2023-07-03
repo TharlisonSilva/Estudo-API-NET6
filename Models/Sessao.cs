@@ -11,6 +11,7 @@ public class Sessao{
     [Required]
     public string FilmeId {get; set;} = null!;
     public virtual Filme Filme {get; set;} = null!;
+    [Required]
     public string CinemaId {get; set;} = null!;
     public virtual Cinema Cinema {get; set;} = null!;
 
