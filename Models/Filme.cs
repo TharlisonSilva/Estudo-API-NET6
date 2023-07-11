@@ -1,6 +1,4 @@
 using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
-
 namespace Estudo_API_NET6.Models;
 public class Filme
 {
@@ -19,8 +17,6 @@ public class Filme
     [Required(ErrorMessage = "A duração do filme é obrigatorio")]
     [Range(50, 600, ErrorMessage = "Um filme deve ter duração de 50 a 600 minutos")]
     public int Duracao { get; set; }
-    public virtual ICollection<Sessao> Sessoes {get; set;} = null!;
-    
     public Filme()
     {
         this.Id = Guid.NewGuid().ToString();

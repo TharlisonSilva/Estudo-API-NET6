@@ -14,7 +14,6 @@ public class Cinema
     [Required(ErrorMessage = "O ID do endereço é obrigatorio")]
     public string EnderecoId { get; set; } = null!;
     public virtual Endereco Endereco { get; set; } = null!;
-    public virtual  ICollection<Sessao> Sessoes {get; set;} = null!;
 
     public Cinema()
     {

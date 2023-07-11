@@ -7,7 +7,6 @@ public class ReadCinemaDto
     public string? Id { get; set; } 
     public string? Nome { get; set; }
     public ReadEnderecoDto Endereco { get; set; } = null!;
-    public ICollection<ReadSessaoDto> Sessoes {get; set;} = null!;
     public DateTime HoraDaConsulta{get; set; } = DateTime.Now;
 
 

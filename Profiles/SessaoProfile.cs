@@ -9,8 +9,10 @@ public class SessaoProfile : Profile
     public SessaoProfile()
     {   
         CreateMap<CreateSessaoDto, Sessao>();
-        CreateMap<Sessao, ReadSessaoDto>();
-        //.ForMember(sessaoDto => sessaoDto.Filme,
-        //            opt => opt.MapFrom(filme => filme.Filme));
+        CreateMap<Sessao, ReadSessaoDto>()
+        .ForMember(sessaoDto => sessaoDto.Filme,
+                    opt => opt.MapFrom(filme => filme.Filme))
+        .ForMember(sessaoDto => sessaoDto.Cinema,
+                    opt => opt.MapFrom(cinema => cinema.Cinema));
     }
 }

@@ -7,9 +7,7 @@ public class ReadSessaoDto
 {
 
     public string? Id { get; set; }
-    public string FilmeId {get; set;} = null!;
-    public virtual Filme Filme {get; set;} = null!;
-    public string CinemaId {get; set;} = null!;
-    public virtual Cinema Cinema {get; set;} = null!;
+    public virtual ReadFilmeDto Filme {get; set;} = null!;
+    public virtual ReadCinemaDto Cinema {get; set;} = null!;
 
 }
