@@ -8,11 +8,9 @@ public class Sessao{
     [Required]
     public string Id{get; set;}
 
-    [Required]
-    public string FilmeId {get; set;} = null!;
+    public string? FilmeId {get; set;} = null!;
     public virtual Filme Filme {get; set;} = null!;
-    [Required]
-    public string CinemaId {get; set;} = null!;
+    public string? CinemaId {get; set;} = null!;
     public virtual Cinema Cinema {get; set;} = null!;
 
     public Sessao(){

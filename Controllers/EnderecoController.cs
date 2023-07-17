@@ -57,4 +57,16 @@ public class EnderecoController : ControllerBase
         return NoContent();
     }
 
+    [HttpDelete("{id}")]
+    public IActionResult DeletarEndereco(String id)
+    {
+        var endereco = _context.Enderecos.FirstOrDefault(item => item.Id == id);
+        if(endereco == null) 
+            return NotFound();
+            
+        _context.Remove(endereco);
+        _context.SaveChanges();
+        return NoContent();
+    }
+
 }

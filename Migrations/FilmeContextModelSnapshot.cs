@@ -88,22 +88,18 @@ namespace Estudo_API_NET6.Migrations
 
             modelBuilder.Entity("Estudo_API_NET6.Models.Sessao", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<string>("FilmeId")
                         .HasColumnType("varchar(255)");
 
                     b.Property<string>("CinemaId")
-                        .IsRequired()
                         .HasColumnType("varchar(255)");
 
-                    b.Property<string>("FilmeId")
-                        .IsRequired()
-                        .HasColumnType("varchar(255)");
+                    b.Property<string>("Id")
+                        .HasColumnType("longtext");
 
-                    b.HasKey("Id");
+                    b.HasKey("FilmeId", "CinemaId");
 
                     b.HasIndex("CinemaId");
-
-                    b.HasIndex("FilmeId");
 
                     b.ToTable("Sessoes");
                 });
@@ -113,7 +109,7 @@ namespace Estudo_API_NET6.Migrations
                     b.HasOne("Estudo_API_NET6.Models.Endereco", "Endereco")
                         .WithOne("Cinema")
                         .HasForeignKey("Estudo_API_NET6.Models.Cinema", "EnderecoId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Endereco");
@@ -124,7 +120,7 @@ namespace Estudo_API_NET6.Migrations
                     b.HasOne("Estudo_API_NET6.Models.Cinema", "Cinema")
                         .WithMany("Sessoes")
                         .HasForeignKey("CinemaId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Estudo_API_NET6.Models.Filme", "Filme")

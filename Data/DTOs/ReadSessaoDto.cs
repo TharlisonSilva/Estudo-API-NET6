@@ -1,6 +1,3 @@
-using System.ComponentModel.DataAnnotations;
-using Estudo_API_NET6.Models;
-
 namespace Estudo_API_NET6.Data.DTOs;
 
 public class ReadSessaoDto

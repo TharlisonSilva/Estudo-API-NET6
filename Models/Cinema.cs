@@ -15,6 +15,8 @@ public class Cinema
     public string EnderecoId { get; set; } = null!;
     public virtual Endereco Endereco { get; set; } = null!;
 
+    public virtual IEnumerable<Sessao> Sessoes {get; set; } = null!;
+
     public Cinema()
     {
         this.Id = Guid.NewGuid().ToString();

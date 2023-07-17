@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Estudo_API_NET6.Migrations
 {
     [DbContext(typeof(FilmeContext))]
-    [Migration("20230625233537_InclusaoSessaoECinema")]
-    partial class InclusaoSessaoECinema
+    [Migration("20230716164355_Delete_restrito_cinema")]
+    partial class Delete_restrito_cinema
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -91,21 +91,18 @@ namespace Estudo_API_NET6.Migrations
 
             modelBuilder.Entity("Estudo_API_NET6.Models.Sessao", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<string>("FilmeId")
                         .HasColumnType("varchar(255)");
 
                     b.Property<string>("CinemaId")
                         .HasColumnType("varchar(255)");
 
-                    b.Property<string>("FilmeId")
-                        .IsRequired()
-                        .HasColumnType("varchar(255)");
+                    b.Property<string>("Id")
+                        .HasColumnType("longtext");
 
-                    b.HasKey("Id");
+                    b.HasKey("FilmeId", "CinemaId");
 
                     b.HasIndex("CinemaId");
-
-                    b.HasIndex("FilmeId");
 
                     b.ToTable("Sessoes");
                 });
@@ -115,7 +112,7 @@ namespace Estudo_API_NET6.Migrations
                     b.HasOne("Estudo_API_NET6.Models.Endereco", "Endereco")
                         .WithOne("Cinema")
                         .HasForeignKey("Estudo_API_NET6.Models.Cinema", "EnderecoId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Endereco");
@@ -123,15 +120,19 @@ namespace Estudo_API_NET6.Migrations
 
             modelBuilder.Entity("Estudo_API_NET6.Models.Sessao", b =>
                 {
-                    b.HasOne("Estudo_API_NET6.Models.Cinema", null)
+                    b.HasOne("Estudo_API_NET6.Models.Cinema", "Cinema")
                         .WithMany("Sessoes")
-                        .HasForeignKey("CinemaId");
+                        .HasForeignKey("CinemaId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.HasOne("Estudo_API_NET6.Models.Filme", "Filme")
                         .WithMany("Sessoes")
                         .HasForeignKey("FilmeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Cinema");
 
                     b.Navigation("Filme");
                 });

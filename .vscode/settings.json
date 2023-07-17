@@ -1,4 +1,6 @@
 {
     "dotnet.defaultSolution": "Estudo-API-NET6.sln",
-    "terminal.integrated.automationProfile.osx": {}
+    "terminal.integrated.automationProfile.osx": {},
+    "appService.preDeployTask": "publish-release",
+    "appService.deploySubpath": "bin/Release/net6.0/publish"
 }
